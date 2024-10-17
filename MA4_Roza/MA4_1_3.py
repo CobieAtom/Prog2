@@ -6,7 +6,7 @@ Review date:
 
 student = ""
 reviewer = ""
-
+#lite koll om allt är uppdaterat
 import math as m
 import random as r
 import numpy 
