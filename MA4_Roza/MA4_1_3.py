@@ -6,7 +6,7 @@ Review date:
 
 student = ""
 reviewer = ""
-#lite koll om allt är uppdaterat
+#Kontroll ett är klar, nu kontroll 2
 import math as m
 import random as r
 import numpy 
