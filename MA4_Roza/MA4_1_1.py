@@ -6,7 +6,7 @@ Solutions to module 4
 Review date:
 """
 
-student = ""
+student = "Rozalin Ghanim"
 reviewer = ""
 
 
@@ -39,7 +39,7 @@ def approximate_pi(n):
 
     # plotta pinkterna
     plt.figure(figsize=(8, 8))
-    plt.scatter(inx, iny, color='orange', s=5)
+    plt.scatter(inx, iny, color='dodgerblue', s=5)
     plt.scatter(outx, outy, color='purple', s=5)
 
     # Plotta cirkeln och kvadrat
@@ -50,7 +50,7 @@ def approximate_pi(n):
     plt.ylim(0, side)
     plt.gca().set_aspect('equal', adjustable='box')
     
-    plt.title(f'MC Simulation for Estimating π with {n} points')
+    plt.title(f'MC Simulation for Estimating π with {n} points', fontsize = 17)
     plt.xlabel('x')
     plt.ylabel('y')
     #plt.legend()
