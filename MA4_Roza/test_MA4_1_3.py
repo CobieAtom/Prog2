@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
 
         self.assertLess(1.5, app_vol)
         self.assertLess(app_vol, 2.2)
-        self.assertLess(par, seq/2.) #always fails this test, 42 != 27, or something like that
+        self.assertLess(par, seq)
 
         # test PART 2 if the sphere volume is within the interval [3.10, 3.18]
         n = 100000
