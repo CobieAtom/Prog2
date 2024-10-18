@@ -4,9 +4,9 @@ Solutions to module 4
 Review date:
 """
 
-student = ""
+student = "Rozalin Ghanim"
 reviewer = ""
-#Kontroll ett är klar, nu kontroll 2
+
 import math as m
 import random as r
 import numpy 
@@ -16,6 +16,14 @@ from time import sleep as pause
 from time import perf_counter as pc
 
 
+#Vectorizing with numpy goes much more faster
+def sphere_volume(n, d, r=1): #nonparallised vol
+    #r = 1
+    dots = numpy.random.uniform(-r, r, (n, d))  # Generating all points at once
+    indots = numpy.sum(numpy.sum(dots**2, axis=1) <= r**2)  # Vectorized check for all points
+    return (indots/n)*((2*r)**d)
+'''
+#For loop makes it really slow
 def sphere_volume(n, d): #nonparallised vol
     indots = 0 
     r = 1
@@ -26,21 +34,16 @@ def sphere_volume(n, d): #nonparallised vol
             indots += 1
         
     return (indots/n)*((2*r)**d) #returns the hypersphere volume throigh the proportion of points * volume of cube
-
+'''
 def hypersphere_exact(n,d, r=1): #hypersphere_exact that calculates the exact volume according to the eq from the task
     real_vol = (m.pi**(d/2))/m.gamma(d/2 +1)*(r**d)
     return real_vol
 
-#
-#FEL HÄR
+
 # parallel code - parallelize the volume and runs iterations of the regular sphere function in parallel with ProcessPoolExecutor
 def sphere_volume_parallel1(n,d,np): #The number of parallel processes
-    #n = [100000] #* 10
-    #n_for_each_proc = n // np 
-    #d = 11 #*10
-    #np = 10 
     with future.ThreadPoolExecutor(max_workers=10) as ex:
-        res = list(ex.map(sphere_volume, [n]*np, [d]*np)) # for each process n*np, d*np #maps the sphere_colume function into a list, not iterable otherwise
+        res = list(ex.map(sphere_volume, [n for x in range(np)], [d for x in range(np)])) # for each process n*np, d*np #maps the sphere_colume function into a list, not iterable otherwise
     average = sum(res)/len(res) #each results are collected and the average is taken
     return average
 
@@ -51,10 +54,8 @@ def sphere_volume_parallel2(n,d,np):
     with future.ThreadPoolExecutor(max_workers=10) as ex:
         res = list(ex.map(sphere_volume, [each_proc]*np, [d]*np)) 
     
-    tot = sum(res) #/len(res) #each processed sum as a approximate value  
-    return tot 
-
-""" dela upp datan """
+    average = sum(res)/len(res) #each results are collected and the average is taken
+    return average 
 
 def main():
     
