@@ -40,7 +40,7 @@ def approximate_pi(n):
     # plotta pinkterna
     plt.figure(figsize=(8, 8))
     plt.scatter(inx, iny, color='dodgerblue', s=5)
-    plt.scatter(outx, outy, color='purple', s=5)
+    plt.scatter(outx, outy, color='black', s=5)
 
     # Plotta cirkeln och kvadrat
     circle = plt.Circle((-1, 1), r/2, color='gray', fill=False, linewidth=2)
@@ -55,6 +55,7 @@ def approximate_pi(n):
     plt.ylabel('y')
     #plt.legend()
     plt.grid(True)
+    plt.savefig(f'MC_{n}.png') 
     #plt.show()
 
     return approx_pi_
