@@ -3,7 +3,7 @@ Solutions to module 4
 Review date:
 """
 
-student = ""
+student = "Rozalin Ghanim"
 reviewer = ""
 
 import math as m
